@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chess</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main style="margin: auto">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.11.0/chess.min.js" integrity="sha512-fQm9eU+Lz0kPDBNJyVJUrMDEOfao7Y+HGcF3HOi/bTl3nL0OsV4vr95x4JjETA1mUng0CPztfPXuIjBoDBUW1w==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-WfASs5HtTgTL/eZsLaOftSN9wMQl7WZGlU5UiKx/yxTViMfGh9whWRwKAC27qH8VtZJqSMqDdbq2uUb1tY3jvQ==" crossorigin="anonymous"></script>
+
+<div id="myBoard" style="width: 45%; margin: auto"></div>
+<div id="buttons">
+  <label><b>Status:</b></label>
+  <div id="status"></div>
+  <!-- <label><b>FEN:</b></label>
+  <div id="fen"></div> -->
+  <label><b>Moves:</b></label>
+  <div id="pgn"></div>
+  <br>
+<button id='showPositionBtn'>Show Position in Console</button><br>
+<button id="resetBtn">Reset Board</button><br>
+<button id="flipOrientationBtn">Flip Board</button><br>
+<button id="playRandomBtn">Simulate Random Game</button><br>
+</div>
+  </main>
+<script  src="main.js"></script>
+</body>
+</html>
