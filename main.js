@@ -1,3 +1,4 @@
+// Game variables
 var game = new Chess()
 var $status = $('#status')
 var $fen = $('#fen')
@@ -6,10 +7,12 @@ var board = null
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
 
+// Function to remove highlight from squares
 function removeGreySquares () {
   $('#myBoard .square-55d63').css('background', '')
 }
 
+// Function to highlight squares
 function greySquare (square) {
   var $square = $('#myBoard .square-' + square)
 
@@ -21,11 +24,13 @@ function greySquare (square) {
   $square.css('background', background)
 }
 
+// Logs the position to the console when a move is made (optional function, can be commented)
 function onChange(oldPos, newPos){
   console.log('Position Changed')
   console.log('New Position: ' + Chessboard.objToFen(newPos))
 }
 
+// Executed when a piece is dragged
 function onDragStart(source, piece, position, orientation){
   // do not pick up pieces if the game is over
   if (game.game_over()) return false
@@ -35,7 +40,7 @@ function onDragStart(source, piece, position, orientation){
       (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
     return false
   }
-
+  // Console logs for debugging
   console.log('Drag Started')
   console.log('Source: ' + source)
   console.log('Piece: ' + piece)
@@ -43,6 +48,7 @@ function onDragStart(source, piece, position, orientation){
   console.log('Orientation: ' + orientation)
 }
 
+// Executed when a piece is dropped on the board
 function onDrop(source, target){
   // see if the move is legal
   var move = game.move({
@@ -96,20 +102,7 @@ function updateStatus () {
   $pgn.html(game.pgn())
 }
 
-function makeRandomMove () {
-  var possibleMoves = game.moves()
-
-  // exit if the game is over
-  if (game.game_over()) return
-
-  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
-  game.move(possibleMoves[randomIdx])
-  board.position(game.fen())
-  updateStatus()
-
-  timer = window.setTimeout(makeRandomMove, 500)
-}
-
+// Binds highlighting to mouse hover
 function onMouseoverSquare (square, piece) {
   // get list of possible moves for this square
   var moves = game.moves({
@@ -129,10 +122,12 @@ function onMouseoverSquare (square, piece) {
   }
 }
 
+// Binds highlight clearing to moving mouse out of square
 function onMouseoutSquare (square, piece) {
   removeGreySquares()
 }
 
+// Game configuration
 var config = {
   position: 'start',
   orientation: 'white',
@@ -151,8 +146,10 @@ var config = {
   onDrop: onDrop
 }
 
+// Final board setup using chessboard.js
 var board = Chessboard('myBoard', config)
 
+// Logs the board position to the console
 function clickShowPositionBtn () {
   console.log('Current position as an Object:')
   console.log(board.position())
@@ -161,6 +158,7 @@ function clickShowPositionBtn () {
   console.log(board.fen())
 }
 
+// Reloads the window to reset the game and board
 function resetGame(){
   window.location.reload()
   // Another way to reload everything without refreshing the page
@@ -174,6 +172,31 @@ function resetGame(){
   // updateStatus()
 }
 
+// Changes the board orientation
+function flip(){
+  board.flip()
+}
+
+// ######################################################################
+// Simulation
+// ######################################################################
+
+// Function that makes a random move
+function makeRandomMove () {
+  var possibleMoves = game.moves()
+
+  // exit if the game is over
+  if (game.game_over()) return
+
+  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  game.move(possibleMoves[randomIdx])
+  board.position(game.fen())
+  updateStatus()
+
+  timer = window.setTimeout(makeRandomMove, 500)
+}
+
+// Starts a game between two AIs playing random moves
 function playRandom(){
   board.destroy
   game.reset()
@@ -182,9 +205,9 @@ function playRandom(){
   timer = window.setTimeout(makeRandomMove, 500)
 }
 
-function flip(){
-  board.flip()
-}
+// #######################################################################
+// Bindings to buttons
+// #######################################################################
 
 $('#showPositionBtn').on('click', clickShowPositionBtn)
 
@@ -196,15 +219,30 @@ $('#playRandomBtn').on('click', playRandom)
 
 $(window).resize(board.resize)
 
+// ##################################################################
 // Adding the AI interfaces in this section
+// ##################################################################
 
+// Loads the level 0 AI script into the head tag
 function level0 (){
   board.destroy()
-  var newScript = document.createElement('script');
-  newScript.type = 'text/javascript';
-  newScript.src = 'engine/random.js';
-  newScript.id = 'ai'
-  document.getElementsByTagName('head')[0].appendChild(newScript);
+  var newScript = document.createElement('script')
+  newScript.type = 'text/javascript'
+  newScript.src = 'engine/random.js'
+  document.getElementsByTagName('head')[0].appendChild(newScript)
 }
 
+// Loads the level 1 AI script into the head tag
+function level1 (){
+  board.destroy()
+  var newScript = document.createElement('script')
+  newScript.type = 'text/javascript'
+  newScript.src = 'engine/level1.js'
+  document.getElementsByTagName('head')[0].appendChild(newScript)
+}
+
+// Buttons to start a game against AI
+
 $('#playLevel0').on('click', level0)
+
+$('#playLevel1').on('click', level1)

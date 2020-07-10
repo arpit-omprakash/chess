@@ -1,12 +1,15 @@
+// Game variables
 var board = null
 var game = new Chess()
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
 
+// Function to remove highlight from squares
 function removeGreySquares () {
   $('#myBoard .square-55d63').css('background', '')
 }
 
+// Function to highlight squares
 function greySquare (square) {
   var $square = $('#myBoard .square-' + square)
 
@@ -18,6 +21,7 @@ function greySquare (square) {
   $square.css('background', background)
 }
 
+// Binds highlighting to mouse hover
 function onMouseoverSquare (square, piece) {
   // get list of possible moves for this square
   var moves = game.moves({
@@ -37,10 +41,12 @@ function onMouseoverSquare (square, piece) {
   }
 }
 
+// Binds highlight clearing to moving mouse out of square
 function onMouseoutSquare (square, piece) {
   removeGreySquares()
 }
 
+// Function to update status of game
 function updateStatus () {
   var status = ''
 
@@ -73,6 +79,7 @@ function updateStatus () {
   $pgn.html(game.pgn())
 }
 
+// Executed when a piece is dragged
 function onDragStart (source, piece, position, orientation) {
   // do not pick up pieces if the game is over
   if (game.game_over()) return false
@@ -81,6 +88,8 @@ function onDragStart (source, piece, position, orientation) {
   if (piece.search(/^b/) !== -1) return false
 }
 
+// The AI part
+// Elementary - plays a random move from the list of possible moves
 function makeRandomMove () {
   var possibleMoves = game.moves()
 
@@ -93,12 +102,14 @@ function makeRandomMove () {
   updateStatus()
 }
 
+// Executed when a piece is dropped on the board
 function onDrop (source, target) {
   // see if the move is legal
   var move = game.move({
     from: source,
     to: target,
-    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+    promotion: 'q' // NOTE: always promote to a queen for simplicity
+    // TODO: Setup a promotion function that asks before promoting a piece
   })
 
   // illegal move
@@ -115,6 +126,7 @@ function onSnapEnd () {
   board.position(game.fen())
 }
 
+// Game configuration
 var config = {
   draggable: true,
   position: 'start',
@@ -125,4 +137,5 @@ var config = {
   onSnapEnd: onSnapEnd
 }
 
+// Final board from chessboard.js
 board = Chessboard('myBoard', config)
