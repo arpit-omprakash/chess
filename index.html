@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-WfASs5HtTgTL/eZsLaOftSN9wMQl7WZGlU5UiKx/yxTViMfGh9whWRwKAC27qH8VtZJqSMqDdbq2uUb1tY3jvQ==" crossorigin="anonymous"></script>
 
 <div id="myBoard" style="width: 45%; margin: auto"></div>
-<div id="buttons">
+<div id="statusBar">
   <label><b>Status:</b></label>
   <div id="status"></div>
   <!-- <label><b>FEN:</b></label>
@@ -23,10 +23,19 @@
   <label><b>Moves:</b></label>
   <div id="pgn"></div>
   <br>
-<button id='showPositionBtn'>Show Position in Console</button><br>
-<button id="resetBtn">Reset Board</button><br>
-<button id="flipOrientationBtn">Flip Board</button><br>
-<button id="playRandomBtn">Simulate Random Game</button><br>
+</div>
+<div id="buttons">
+  <table class='buttons'>
+    <tr>
+      <td><button id="resetBtn">Reset Board</button>
+      <td><button id='playLevel0'>Play against Level 0 AI</button>
+    <tr>
+      <td><button id="flipOrientationBtn">Flip Board</button>
+    <tr>
+      <td><button id="playRandomBtn">Simulate Random Game</button>
+    <tr>
+      <td><button id='showPositionBtn'>Show Position in Console</button>
+<br>
 </div>
   </main>
 <script  src="main.js"></script>

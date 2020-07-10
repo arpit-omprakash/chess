@@ -162,14 +162,16 @@ function clickShowPositionBtn () {
 }
 
 function resetGame(){
-  board.destroy
-  board = Chessboard('myBoard', config)
-  game.reset()
-  if (timer){
-    clearTimeout(timer)
-    timer = 0
-  }
-  updateStatus()
+  window.location.reload()
+  // Another way to reload everything without refreshing the page
+  // board.destroy
+  // board = Chessboard('myBoard', config)
+  // game.reset()
+  // if (timer){
+  //   clearTimeout(timer)
+  //   timer = 0
+  // }
+  // updateStatus()
 }
 
 function playRandom(){
@@ -193,3 +195,16 @@ $('#flipOrientationBtn').on('click', flip)
 $('#playRandomBtn').on('click', playRandom)
 
 $(window).resize(board.resize)
+
+// Adding the AI interfaces in this section
+
+function level0 (){
+  board.destroy()
+  var newScript = document.createElement('script');
+  newScript.type = 'text/javascript';
+  newScript.src = 'engine/random.js';
+  newScript.id = 'ai'
+  document.getElementsByTagName('head')[0].appendChild(newScript);
+}
+
+$('#playLevel0').on('click', level0)
