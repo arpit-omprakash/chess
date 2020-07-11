@@ -3,6 +3,7 @@ var board = null
 var game = new Chess()
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
+var positionCount
 
 // Function to remove highlight from squares
 function removeGreySquares () {
@@ -174,6 +175,7 @@ function calculateBestMove(game){
 
   // Iterates to create an array of bestMove(s)
   for (let i = 0; i < newMoves.length; i++){
+    positionCount++
     let newMove = newMoves[i]
     game.move(newMove)
     // Take negative as AI plays as black
@@ -197,7 +199,18 @@ function calculateBestMove(game){
 
 // Calls the calculateBestMove function and makes the move
 function makeAIMove(){
+  positionCount = 0
+
+  let d = new Date().getTime()
   let aiMove = calculateBestMove(game)
+  let d2 = new Date().getTime()
+  let moveTime = (d2 - d)
+  let positionsPerS = (positionCount * 1000 / moveTime)
+
+  $('#position-count').text(positionCount)
+  $('#time').text(moveTime/1000 + 's')
+  $('#positions-per-s').text(positionsPerS)
+
   game.move(aiMove)
   board.position(game.fen())
   updateStatus()

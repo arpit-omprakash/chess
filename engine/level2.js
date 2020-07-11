@@ -158,6 +158,7 @@ function evaluateBoard(board){
   return totalEvaluation
 }
 
+// Implementation of the minimax algorithm (recursive)
 function minimax(depth, game, isMaximisingPlayer){
   positionCount++
   if (depth === 0){
@@ -165,7 +166,7 @@ function minimax(depth, game, isMaximisingPlayer){
   }
 
   let newGameMoves = game.moves()
-
+  // if white is to play
   if (isMaximisingPlayer){
     let bestMove = -9999
     for(let i = 0; i < newGameMoves.length; i++){
@@ -174,7 +175,7 @@ function minimax(depth, game, isMaximisingPlayer){
       game.undo()
     }
     return bestMove
-  } else {
+  } else {  // if black is to play
     let bestMove = 9999
     for(let i = 0; i < newGameMoves.length; i++){
       game.move(newGameMoves[i])
@@ -185,12 +186,14 @@ function minimax(depth, game, isMaximisingPlayer){
   }
 }
 
+// Uses the minimax function to generate best move
 function minimaxRoot(depth, game, isMaximisingPlayer){
   let newGameMoves = game.moves()
   let bestMove = -9999
   let bestMoveArr = []
   let bestMoveFound
 
+  // generates the best moves array
   for(let i = 0; i < newGameMoves.length; i++){
     let newGameMove = newGameMoves[i]
     game.move(newGameMove)
@@ -204,22 +207,26 @@ function minimaxRoot(depth, game, isMaximisingPlayer){
       bestMoveArr.push(newGameMove)
     }
 
+    // Chooses a random move from the best move array
     let randomIdx = Math.floor(Math.random() * bestMoveArr.length)
     bestMoveFound = bestMoveArr[randomIdx]
   }
   return bestMoveFound
 }
 
+// A wrapper for the minimaxRoot function that updates performance metrics
 function calculateBestMove(game){
   positionCount = 0
   let depth = parseInt($('#search-depth').find(':selected').text())
 
+  // Calculates time and number of positions scanned
   let d = new Date().getTime()
   let bestMove = minimaxRoot(depth, game, true)
   let d2 = new Date().getTime()
   let moveTime = (d2 - d)
   let positionsPerS = (positionCount * 1000 / moveTime)
 
+  // Updates performance metrics
   $('#position-count').text(positionCount)
   $('#time').text(moveTime/1000 + 's')
   $('#positions-per-s').text(positionsPerS)
