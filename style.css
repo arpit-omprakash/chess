@@ -55,6 +55,7 @@ button:active {
   border-radius: 6px;
   padding: 5px 0;
   font: 12px Arial, sans-serif;
+  opacity: 0.5;
 
   /* Position */
   position: absolute;
