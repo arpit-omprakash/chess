@@ -124,6 +124,7 @@ function onDrop (source, target) {
 // for castling, en passant, pawn promotion
 function onSnapEnd () {
   board.position(game.fen())
+  removeGreySquares()
 }
 
 // Game configuration
