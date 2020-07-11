@@ -251,6 +251,14 @@ function level2 (){
   document.getElementsByTagName('head')[0].appendChild(newScript)
 }
 
+// Loads the level 3 AI script into the head tag
+function level3 (){
+  board.destroy()
+  var newScript = document.createElement('script')
+  newScript.type = 'text/javascript'
+  newScript.src = 'engine/level3.js'
+  document.getElementsByTagName('head')[0].appendChild(newScript)
+}
 
 // Buttons to start a game against AI
 
@@ -259,3 +267,5 @@ $('#playLevel0').on('click', level0)
 $('#playLevel1').on('click', level1)
 
 $('#playLevel2').on('click', level2)
+
+$('#playLevel3').on('click', level3)
