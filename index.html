@@ -43,10 +43,31 @@
     <tr>
       <td><button id="playRandomBtn" class='btn'>Simulate Random Game
       <span>Simulate a game between two Level 0 AIs</span></button>
+      <td><button id='playLevel2' class='btn'>Play against Level 2 AI
+      <span>Play against an AI that understands basic chess tactics</span></button>
     <tr>
       <td><button id='showPositionBtn' class='btn'>Show Position in Console
       <span>Check the console for more info</span></button>
+    <tr>
 <br>
+</div>
+<div class='info'>
+  <b>Performance index for AI</b><br>
+  Search depth (For Level 2 AI):
+  <select id='search-depth'>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+  </select>
+  <br>
+  <span>Positions evaluated: <span id="position-count"></span></span>
+    <br>
+    <span>Time: <span id="time"></span></span>
+    <br>
+    <span>Positions/s: <span id="positions-per-s"></span> </span>
+    <br>
 </div>
   </main>
 <script  src="main.js"></script>
