@@ -202,8 +202,9 @@ function makeAIMove(){
   board.position(game.fen())
   updateStatus()
 }
-
+// ##########################################################################
 // Game configuration
+// ##########################################################################
 var config = {
   draggable: true,
   position: 'start',
@@ -216,3 +217,4 @@ var config = {
 
 // Final board setup from chessboard.js
 board = Chessboard('myBoard', config)
+updateStatus()

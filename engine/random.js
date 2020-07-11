@@ -127,7 +127,9 @@ function onSnapEnd () {
   removeGreySquares()
 }
 
+// ##########################################################################
 // Game configuration
+// ##########################################################################
 var config = {
   draggable: true,
   position: 'start',
@@ -140,3 +142,4 @@ var config = {
 
 // Final board from chessboard.js
 board = Chessboard('myBoard', config)
+updateStatus()
