@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Kingdom</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navbar/nav.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+
+<body style="justify-content: center; text-align:center">
+  <div class="title">Two Kings on a Board</div><br>
+  <nav>
+  <ul>
+    <li><a href="https://aceking007.github.io/">Home</a></li>
+    <li><a href="https://aceking007.github.io/projects/">Projects</a></li>
+    <li class='active'><a href="">How to play</a></li>
+    <li><a href="index.html">Play</a></li>
+  </ul>
+</nav><br>
+<h1>The Interface</h1><br>
+<img src="instructions/chesssite1.JPG" style="border:2px solid white"><br>
+<h2>The Board</h2>
+<p>The board is where all the fun is!<br>
+It is the battlefield where you can compete with your friends or an AI to prove your chess skills.<br>
+It is a pretty simple board of chess. The only thing is <b>Pieces need to be dragged always!</b><br>
+There is no simple mechanism for touching a piece and the next square to automatically move the piece (I'm still working on it)<br></p>
+<h2>Status Bar</h2>
+<p>The status bar is where the current game status is displayed.<br>
+The <em>status</em> row shows the current status of the game (colour to play, whether there is a check, if the game is over).<br>
+The <em>moves</em> row shows the PGN output of the moves played in the game.</p>
+<h2>Undo Button</h2>
+<p>The Undo button is the recently added feature.<br>
+It takes back the <b>last two moves</b> from the game.<br>
+The initial thought was to take back one move, but it seemed like a futile effort when playing agaisnt the AI.<br>
+Be careful when you use it in your normal two player games though (I won't really recommend using this button at all).<br></p>
+
+<h1>Buttons and AI</h1>
+<img src="instructions/chesssite2.JPG" style="border:2px solid white"><br>
+<h2>Buttons</h2>
+<h4>Reset Board</h4>
+<p>Resets the board and game to the initial position.<br>
+  Effectively reloads the page.</p>
+<h4>Flip Board</h4>
+<p>Flips the orientation of the board (which colour is facing down).<br>
+  Helpful to get the POV of the AI or when playing with a friend.</p>
+<h4>Simulate Random Game</h4>
+<p>Simulates a game between two AI players that play random moves.<br>
+Not really useful for the general public, but maybe helpful to carry out some simulations for theorists and mathematicians.</p>
+<h4>Show Position in Console</h4>
+<p>Shows the current board position as a FEN string, PGN values and a Position object in the console.<br>
+  Useful if you want to save a game for later analysis (particularly the FEN string).
+</p>
+<h4>Play against Level 0 AI</h4>
+<p>Level 0 AI is basically just a stupid RNG (Random Number Generator).<br>
+It chooses a random move from the list of valid moves given the game configuration.<br>
+It should be pretty easy to win against this, if you are still losing, you should consider changing your hobby of playing chess.</p>
+<h4>Play against Level 1 AI</h4>
+<p>Level 1 AI is still a RNG but it has a special weapon, <br>
+It will always capture one of your pieces if it can.<br>
+It can also distinguish between the value of pieces and capture the more valued piece given a choice.<br></p>
+<h4>Play against Level 2 AI</h4>
+<p>Level 2 AI knows a bit of chess.<br>
+It uses an algorithm known as <em>Minimax search</em> to search a tree of moves (and scenarios) and then "decides" the best move to play.<br>
+You can adjust the depth of move search using the selection box in the paragrph above the buttons.<br>
+More depth = better moves, but it also takes longer time to arrive at the best move.</p>
+<h4>Play against Level 3 AI</h4>
+<p>Level 3 AI uses the Minimax algorithm, but it is better equipped to disregard some parts of the analysis.<br>
+It implements something called alpha-beta pruning to reduce the size of tree that it has to traverse, thus, making faster moves than AI Level 2.<br></p>
+<h2>Performance Index</h2>
+<p>For AI levels 2 and 3 (also implemented for level 1, but it doesn't make much sense), this part of the webpage shows the performance metrics of each move as the AI plays.<br>
+The <em>search depth</em> option can be set to any value from 1 to 5, and it denotes the strength of the AI player (in increasing order).<br>
+The AI performs almost all the best moves at depth level 5, where as depth level 1 plays almost like AI level 1.<br>
+<em>Positions evaluated</em> shows the number of board positions that were evaluated before making the move.<br>
+<em>Time</em> shows the move time in seconds.<br>
+<em>Positions/sec</em> shows the approximate number of board positions evaluated per second by the CPU.</p>
+
+<!-- <h1>The Game</h1> -->
+
+</body>
