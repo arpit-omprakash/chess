@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+## Kingdom (Two Kings on a Board) - A Game of Chess
 
-You can use the [editor on GitHub](https://github.com/aceking007/chess/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A game of Chess using javascript, playable in your browser.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You are free to explore the code and even build your own site/chess engine by referring to the code here. But make sure to include the [License notice](https://github.com/aceking007/chess/blob/master/LICENSE) in all the subsequent copies or derivatives of the code.
 
-### Markdown
+Click [here](https://aceking007.github.io/chess/) to play the game.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Thanks
 
-```markdown
-Syntax highlighted code block
++ Chris Oakman for [chessboard.js](https://github.com/oakmac/chessboardjs/) - the handy chess visualizer.
 
-# Header 1
-## Header 2
-### Header 3
++ Jeff Hlywa for [chess.js](https://github.com/jhlywa/chess.js) - javascript library that provides the game and moves.
 
-- Bulleted
-- List
++ Lauri Hartikka for the [blogpost](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/) and inspiration for the chess engine.
 
-1. Numbered
-2. List
+### Support & Contact
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/aceking007/chess/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Having trouble understanding the page? Check out the instructions [here](https://aceking007.github.io/chess/instructions.html). If you have any queries or suggestions mail to omprakasharpit@gmail.com or feel free to raise an issue on GitHub.
