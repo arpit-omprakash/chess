@@ -3,9 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Chess</title>
+  <title>Kingdom</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navbar/nav.css">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
@@ -13,11 +14,20 @@
 </head>
 
 <body>
+  <div class="title">Two Kings on a Board</div><br>
+  <div style="text-align:center; font-size:20px; padding-bottom:5px">A simple game of Chess</div>
+  <nav>
+  <ul>
+    <li><a href="https://aceking007.github.io/">Home</a></li>
+    <li><a href="https://aceking007.github.io/projects/">Projects</a></li>
+    <li><a href="instructions.html">How to play</a></li>
+    <li class='active'><a href="">Play</a></li>
+  </ul>
+</nav><br>
   <main style="margin: auto">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.11.0/chess.min.js" integrity="sha512-fQm9eU+Lz0kPDBNJyVJUrMDEOfao7Y+HGcF3HOi/bTl3nL0OsV4vr95x4JjETA1mUng0CPztfPXuIjBoDBUW1w==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-WfASs5HtTgTL/eZsLaOftSN9wMQl7WZGlU5UiKx/yxTViMfGh9whWRwKAC27qH8VtZJqSMqDdbq2uUb1tY3jvQ==" crossorigin="anonymous"></script>
-
 <div id="myBoard" style="width: 45%; margin: auto"></div>
 <div id="statusBar">
   <label><b>Status:</b></label>
@@ -29,6 +39,7 @@
   <br>
 </div>
 <div id="buttons">
+  <button id="undoBtn">Undo Last Move</button>
   <table class='buttons'>
     <tr>
       <td><button id="resetBtn" class='btn'>Reset Board
@@ -68,7 +79,7 @@
     <br>
     <span>Time: <span id="time"></span></span>
     <br>
-    <span>Positions/s: <span id="positions-per-s"></span> </span>
+    <span>Positions/sec: <span id="positions-per-s"></span> </span>
     <br>
 </div>
   </main>
