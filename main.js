@@ -269,3 +269,14 @@ $('#playLevel1').on('click', level1)
 $('#playLevel2').on('click', level2)
 
 $('#playLevel3').on('click', level3)
+
+// Undo operation
+// Removes the last two moves from the board
+function undoMove(){
+  game.undo()
+  game.undo()
+  board.position(game.fen())
+  updateStatus()
+}
+
+$('#undoBtn').on('click', undoMove)
